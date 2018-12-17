@@ -1,0 +1,119 @@
+/* pages/search/search.wxss */
+.search{  
+    width: 90%;
+    margin: 0rpx auto;
+}  
+.search_arr {  
+border: 1px solid #d0d0d0;  
+border-radius: 10rpx;  
+margin-left: 20rpx;  
+}  
+.search_arr input{  
+margin-left: 60rpx;  
+height: 60rpx;  
+border-radius: 5px;  
+}  
+.bc_text {  
+line-height: 68rpx;  
+height: 68rpx;  
+margin-top: 34rpx;  
+}  
+
+.sousuo {  
+margin-left: 15rpx;  
+width: 15%;  
+line-height: 150%;  
+text-align: center;  
+border: 1px solid #d0d0d0;  
+border-radius: 10rpx;  
+}  
+.page_row{  
+display: flex;  
+flex-direction: row  
+}  
+.searchcion {  
+margin: 10rpx 10rpx 10rpx 40rpx;  
+position: absolute;  
+left:25rpx;  
+z-index: 2;  
+width: 20px;  
+height: 20px;  
+text-align: center;  
+}  
+/**index.wxss**/
+.container{
+  margin: 0rpx;
+  padding: 0rpx;
+}
+.auth_but{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+.card{
+  width: 650rpx;
+  height:auto;
+  margin-top: 40rpx;
+  border-radius: 10rpx;
+  background-color: #FBFAF6;
+}
+.card-img-view{
+  text-align: center;
+}
+.card-con-view{
+  min-height: 150rpx;
+  margin-left: 10rpx;
+  margin-top: 20rpx;
+  border-bottom-right-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+  background-color: #FBFAF6;
+}
+.card-img{
+  border-radius: 10rpx;
+  margin-bottom: -10rpx;
+}
+.card-text{
+  font-size: 30rpx;
+}
+.card-con-but-view{
+  margin: 20rpx 20rpx;
+  padding-bottom:60rpx;
+}
+.card-con-but{
+  width: 50rpx;
+  height: 50rpx;
+}
+.card-con-like{
+  float: left;
+}
+.card-con-friends{
+  float: right;
+  margin-right: -50rpx;
+}
+.card-con-wechat{
+  float: right;
+  margin-right: -50rpx;
+}
+.card-con-but-group{
+  width: 50rpx;
+  height: 50rpx;
+  padding: 0;
+  border: none;
+  opacity: 0;
+
+}
+.card-con-but-group-friends{
+  float: right;
+  margin-right: 20rpx;
+}
+.card-con-but-group-wechat{
+  float: right;
+  margin-right: 20rpx;
+}
+.like_count{
+  font-size: 24rpx;
+}

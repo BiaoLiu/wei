@@ -1,0 +1,23 @@
+<!--pages/like/like.wxml-->
+<view class="container">
+  <view class='card' wx:for="{{card_lists}}" wx:for-index="key"  wx:for-item="card_list">
+    <view class='card-img-view'>
+      <image src='{{card_list.active_picture}}' class='card-img' mode="aspectFill" data-src="{{card_list.active_picture}}" bindtap="clickimg"></image>
+    </view>
+    <view class='card-con-view'>
+    <text class='card-text' selectable="true" bindlongpress='copy' data-text='{{card_list.active_rules}}'>{{card_list.active_rules}}</text>
+    <view class='card-con-but-view'>
+    <image wx:if="{{card_list.liked!=''}}" src='../../image/icon/shoucang_fill.png' class='card-con-like card-con-but' data-index='{{key}}' bindtap="onCollectionTap"></image>
+    <image wx:else="{{card_list.liked==''}}" src='../../image/icon/shoucang.png' class='card-con-like card-con-but' data-index='{{key}}' bindtap="onCollectionTap"></image>
+    <text wx:if="{{card_list.like_count>0}}" class='like_count'>{{card_list.like_count}}</text>
+    <text wx:else="{{card_list.like_count<=0}}" class='like_count'>{{card_list.like_count}}</text>
+    <button class='card-con-but-group card-con-but-group-friends' data-title='{{card_list.active_rules}}' data-imgsrc='{{card_list.active_picture}}' open-type="share"></button>
+    <image class='card-con-friends card-con-but' src='../../image/icon/friends.png'></image>
+    <button class='card-con-but-group card-con-but-group-wechat' data-title='{{card_list.active_rules}}' data-imgsrc='{{card_list.active_picture}}' open-type="share"></button>
+    <image class='card-con-wechat card-con-but' src='../../image/icon/wechat.png'></image>
+    </view>
+    </view>
+  </view>
+  <button wx:if="{{!hasUserInfo && canIUse}}"  class='auth_but'  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> </button>
+</view>
+

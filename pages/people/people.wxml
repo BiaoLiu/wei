@@ -1,0 +1,25 @@
+<!--pages/people/people.wxml-->
+<view class="container">
+  <view class="logo">
+  <open-data type="userAvatarUrl" class="userinfo"></open-data>
+  <open-data type="userNickName" class="nickname" lang="zh_CN"></open-data> 
+  <navigator  wx:if="{{user_id==1000005}}" url="/pages/back/back" hover-class="none">
+    <text style='font-size:24rpx;'>上传</text>
+  </navigator>
+  <navigator  wx:if="{{user_id==1000005}}" url="/pages/users/users" hover-class="none">
+    <text style='font-size:24rpx;'>用户</text>
+  </navigator>
+  </view>
+    <view class='navigator'>
+    <navigator url="/pages/friends/friends" hover-class="none">
+      <view><image src='../../image/icon/haoyou.png'></image></view>
+      <view>好友|{{firend_count}}</view>
+    </navigator>
+
+    <navigator url="/pages/like/like" open-type = "switchTab" hover-class="none">
+      <view><image src='../../image/icon/likes.png'></image></view>
+      <view>收藏|{{like_count}}</view>
+    </navigator>
+    </view>
+  <view class='blank'></view>
+</view>

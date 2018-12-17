@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/search/search",
+    "pages/like/like",
+    "pages/people/people",
+    "pages/emoji/emoji",
+    "pages/friends/friends",
+    "pages/back/back",
+    "pages/users/users"
+  ],
+  "window": {
+    "navigationBarTitleText": "wei助手",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/icon/home.png",
+        "selectedIconPath": "image/icon/home_fill.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "image/icon/search.png",
+        "selectedIconPath": "image/icon/search_fill.png"
+      },
+      {
+        "pagePath": "pages/emoji/emoji",
+        "text": "表情包",
+        "iconPath": "image/icon/emoji.png",
+        "selectedIconPath": "image/icon/emoji_fill.png"
+      },
+      {
+        "pagePath": "pages/like/like",
+        "text": "收藏",
+        "iconPath": "image/icon/like.png",
+        "selectedIconPath": "image/icon/like_fill.png"
+      },
+      {
+        "pagePath": "pages/people/people",
+        "text": "个人中心",
+        "iconPath": "image/icon/people.png",
+        "selectedIconPath": "image/icon/people_fill.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ]
+}

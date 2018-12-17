@@ -1,0 +1,58 @@
+/* pages/people/people.wxss */
+.container{
+  padding: 0;
+  margin: 0;
+}
+.blank{
+  width: 100%;
+  height: 10rpx;
+  background:rgb(204, 204, 204);
+}
+.logo{
+  width: 650rpx;
+  height: 144rpx;
+}
+.logo navigator image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.logo navigator{
+  float: right;
+  display: flex;
+  margin-top: 40rpx;
+  margin-right: 20rpx;
+}
+.nickname{
+  font-size: 30rpx;
+  display: flex;
+  margin-top: 50rpx;
+  padding-left: 30rpx;
+  float: left;
+}
+
+.userinfo{
+  width: 100rpx;
+  height:100rpx;
+  border-radius:50%;
+  display: flex;
+  overflow:hidden;
+  float: left;
+}
+.navigator{
+  height: 100rpx;
+  padding: 20rpx 0;
+  width: 100%;
+}
+.navigator navigator{
+  float: left;
+  width: 50%;
+
+}
+.navigator navigator image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.navigator navigator view{
+  text-align: center;
+  font-size: 28rpx;
+}

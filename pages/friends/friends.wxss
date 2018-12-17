@@ -1,0 +1,25 @@
+/* pages/friends/friends.wxss */
+.container{
+  padding: 0;
+  margin: 0;
+}
+.friend{
+  height: 80rpx;
+  width: 100%;
+  border-bottom: 1rpx solid rgb(179, 179, 179);
+  padding-top: 30rpx;
+  padding-left: 20rpx;
+  background: white;
+}
+.friend image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.friend .fimg{
+  float: left;
+  margin-left: 30rpx;
+}
+.friend .fname{
+  float: left;
+  margin-left: 20rpx;
+}

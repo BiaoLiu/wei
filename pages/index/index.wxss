@@ -34,6 +34,7 @@
   border-radius: 10rpx;
   margin-bottom: -10rpx;
   width: 640rpx;
+  
 }
 .card-text{
   font-size: 30rpx;

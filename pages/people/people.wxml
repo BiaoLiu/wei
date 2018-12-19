@@ -3,11 +3,11 @@
   <view class="logo">
   <open-data type="userAvatarUrl" class="userinfo"></open-data>
   <open-data type="userNickName" class="nickname" lang="zh_CN"></open-data> 
-  <navigator  wx:if="{{user_id==1000005}}" url="/pages/back/back" hover-class="none">
-    <text style='font-size:24rpx;'>上传</text>
+  <navigator   url="/pages/back/back" hover-class="none">
+    <image src='../../image/icon/add.png'></image>
   </navigator>
   <navigator  wx:if="{{user_id==1000005}}" url="/pages/users/users" hover-class="none">
-    <text style='font-size:24rpx;'>用户</text>
+    <image src='../../image/icon/yonghuguanli.png'></image>
   </navigator>
   </view>
     <view class='navigator'>
@@ -17,7 +17,7 @@
     </navigator>
 
     <navigator url="/pages/like/like" open-type = "switchTab" hover-class="none">
-      <view><image src='../../image/icon/likes.png'></image></view>
+      <view><image src='../../image/icon/shoucang_fill.png'></image></view>
       <view>收藏|{{like_count}}</view>
     </navigator>
     </view>

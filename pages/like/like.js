@@ -2,6 +2,7 @@
 const baseUrl = 'https://www.popyelove.com/'
 const app = getApp()
 const qrcode = 'http://pjd0p2xh1.bkt.clouddn.com/qrcode.jpg'
+var utils = require('../../utils/util.js')
 var switch_flag;
 Page({
 
@@ -79,6 +80,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     wx.request({
       url: baseUrl + 'user/my/actives', //仅为示例，并非真实的接口地址
       data: {
@@ -93,6 +95,15 @@ Page({
         console.log(res.data)
         if (res.data.ret == 0) {
           var cards = res.data.data
+        }else if(res.data.ret==8001){
+          var login_res = false
+          utils.relogin().then(function (loginres) {
+            login_res = loginres
+            console.log(login_res)
+            if (login_res) {
+              that.onLoad();
+            }
+          });
         }
 
         this.setData({

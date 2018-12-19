@@ -15,6 +15,7 @@
 .logo navigator image{
   width: 40rpx;
   height: 40rpx;
+  margin-right: 10rpx;
 }
 .logo navigator{
   float: right;

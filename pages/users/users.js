@@ -1,5 +1,6 @@
 // pages/users/users.js
 const baseUrl = 'https://www.popyelove.com/'
+var utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -14,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
     wx.request({
       url: baseUrl + 'user/users', //仅为示例，并非真实的接口地址
       data: {
@@ -28,6 +30,15 @@ Page({
         console.log(res.data)
         if (res.data.ret == 0) {
           var friends = res.data.data
+        }else if(res.data.ret==8001){
+          var login_res = false
+          utils.relogin().then(function (loginres) {
+            login_res = loginres
+            console.log(login_res)
+            if (login_res) {
+              that.onLoad();
+            }
+          });
         }
 
         this.setData({

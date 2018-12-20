@@ -16,8 +16,8 @@
       <view>好友|{{firend_count}}</view>
     </navigator>
 
-    <navigator url="/pages/like/like" open-type = "switchTab" hover-class="none">
-      <view><image src='../../image/icon/shoucang_fill.png'></image></view>
+    <navigator url="/pages/like/like" hover-class="none">
+      <view><image src='../../image/icon/shoucangs.png'></image></view>
       <view>收藏|{{like_count}}</view>
     </navigator>
     </view>

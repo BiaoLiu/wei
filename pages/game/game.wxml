@@ -1,0 +1,48 @@
+<view class="container">
+<scroll-view scroll-y="{{true}}" style="width: 100%" >
+    <!-- 背景 -->
+    <view class="game-bg">
+        <image src="/image/images/game_bg_01.jpg" />
+        <image src="/image/images/game_bg_02.jpg" />
+        <image src="/image/images/game_bg_03.jpg" />
+        <image src="/image/images/game_bg_04.jpg" />
+        <image src="/image/images/game_bg_05.jpg" />
+    </view>
+
+        <!-- 转盘 -->
+    <view class="game-box">
+        <view class="wheel" animation="{{gameAnimation}}">
+            <image src="/image/images/game-wheel.png" />
+        </view>
+        <view class="arrow" bindtap="gameAction">
+            <image src="/image/images/game-arrow.png" />
+        </view>
+        </view>
+
+        <!-- 活动时间 -->
+        <view class="a-time">活动时间：2018.12.20~2019.01.20</view>
+
+        <!-- 模态框 -->
+        <view class="game-modal" wx:if="{{gameModal}}">
+            <view class="game-modal-mask"></view>
+            <view class="game-modal-content">
+                <image src="/image/images/game-modal.png" />
+                <view class="game-modal-title">
+                    {{gameModalData.title}}
+                </view>
+                <view class="prize">
+                    {{gameModalData.prize}}
+                </view>
+                <view class="action-btn" bindtap="actionBtn">
+                        使用
+                </view>
+                <view class="invalid-date">
+                    {{gameModalData.invalid_date}}
+                </view>
+                <view class="close" bindtap="closeModal">
+                    关闭
+                </view>
+            </view>
+        </view>
+ </scroll-view>
+</view>

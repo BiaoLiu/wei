@@ -14,6 +14,9 @@ Page({
   uploadimg:function(data) {
     console.log(data)
     var that = this;
+    wx.showLoading({
+      title: '上传中...',
+    })
     wx.uploadFile({
       url: data.url, //开发者服务器 url
       filePath: data.path[0],
@@ -25,11 +28,18 @@ Page({
         'context': data.context
       },
       success: res => {
+        // 隐藏加载框
+        wx.hideLoading();
         that.setData({
           context: '',
           count: 0,
           images: []
 
+        })
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000
         })
       },
     })

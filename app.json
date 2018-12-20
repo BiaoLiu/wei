@@ -4,10 +4,10 @@
     "pages/search/search",
     "pages/like/like",
     "pages/people/people",
-    "pages/emoji/emoji",
     "pages/friends/friends",
     "pages/back/back",
-    "pages/users/users"
+    "pages/users/users",
+    "pages/game/game"
   ],
   "window": {
     "navigationBarTitleText": "wei助手",
@@ -30,16 +30,10 @@
         "selectedIconPath": "image/icon/search_fill.png"
       },
       {
-        "pagePath": "pages/emoji/emoji",
-        "text": "表情包",
-        "iconPath": "image/icon/emoji.png",
-        "selectedIconPath": "image/icon/emoji_fill.png"
-      },
-      {
-        "pagePath": "pages/like/like",
-        "text": "收藏",
-        "iconPath": "image/icon/like.png",
-        "selectedIconPath": "image/icon/like_fill.png"
+        "pagePath": "pages/game/game",
+        "text": "抽奖",
+        "iconPath": "image/icon/gift.png",
+        "selectedIconPath": "image/icon/gift_fill.png"
       },
       {
         "pagePath": "pages/people/people",

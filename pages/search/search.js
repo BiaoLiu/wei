@@ -83,32 +83,49 @@ Page({
   },
   query: function (event) {
     var that = this
-    /**
-     * 提问帖子搜索API
-     * keyword string 搜索关键词 ; 这里是 this.data.inputValue
-     * start int 分页起始值 ; 这里是 0
-     */
-    wx.request({
-      url: baseUrl +'active/list',
-      data: { 
-        keyword: this.data.inputValue
-      },     
-      method: 'POST',
-      header: {
-        'content-type': 'application/json', // 默认值
-        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
-      },
-      success: res => {
-        console.log(res.data)
-        if (res.data.ret == 0) {
-          var cards = res.data.data
-        }
+    var keyword = that.data.inputValue
+    if(keyword!=""){
+      wx.request({
+        url: baseUrl + 'active/list',
+        data: {
+          keyword: that.data.inputValue
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+        },
+        success: res => {
+          console.log(res.data)
+          if (res.data.ret == 0) {
+            var cards = res.data.data
+          }
+          if(cards.length!==0){
 
-        this.setData({
-          card_lists: cards
-        })
-      }
-    })
+            this.setData({
+              card_lists: cards
+            })
+          }else{
+            wx.showToast({
+              title: '没有相关数据',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+
+        }
+      })
+    }else{
+      this.setData({
+        card_lists: []
+      })
+      wx.showToast({
+        title: '请输入关键字',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+
   },
 
   /**
@@ -203,31 +220,44 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading();
-    wx.request({
-      url: baseUrl + 'active/list',
-      data: {
-        keyword: this.data.inputValue
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json', // 默认值
-        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
-      },
-      success: res => {
-        if (res.data.ret == 0) {
-          var cards = res.data.data
+    var word = this.data.inputValue
+    if (word!=""){
+      wx.showNavigationBarLoading();
+      wx.request({
+        url: baseUrl + 'active/list',
+        data: {
+          keyword: this.data.inputValue
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+        },
+        success: res => {
+          if (res.data.ret == 0) {
+            var cards = res.data.data
+          }
+          this.setData({
+            card_lists: cards,
+            page: 1
+          })
+          // 隐藏导航栏加载框
+          wx.hideNavigationBarLoading();
+          // 停止下拉动作
+          wx.stopPullDownRefresh();
         }
-        this.setData({
-          card_lists: cards,
-          page:1
-        })
-        // 隐藏导航栏加载框
-        wx.hideNavigationBarLoading();
-        // 停止下拉动作
-        wx.stopPullDownRefresh();
-      }
-    })
+      })
+    }else{
+      this.setData({
+        card_lists: []
+      })
+      wx.showToast({
+        title: '请输入关键字',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+
   },
 
   /**

@@ -9,6 +9,9 @@
   <navigator  wx:if="{{user_id==1000005}}" url="/pages/users/users" hover-class="none">
     <image src='../../image/icon/yonghuguanli.png'></image>
   </navigator>
+  <navigator   url="" hover-class="none" bindtap='signUp'>
+    <image src='../../image/icon/sign.png'></image>
+  </navigator>
   </view>
     <view class='navigator'>
     <navigator url="/pages/friends/friends" hover-class="none">

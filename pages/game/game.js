@@ -57,7 +57,7 @@ Page({
   },
   // 关闭模态框
   closeModal(){
-    this.sendGameData();
+    //this.sendGameData();
     this.setData({
       gameModal: false
     })
@@ -140,6 +140,12 @@ Page({
   },
   // 开始游戏
   gameAction(){
+    wx.showToast({
+      title: '敬请期待。。。',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
     // 模拟抽奖
     var rotateZPositionIndex = Math.round(Math.random()* 4)
     // 判断游戏是否进行中

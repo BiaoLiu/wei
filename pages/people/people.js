@@ -11,7 +11,44 @@ Page({
     like_count:0,
     user_id:0
   },
+  signUp: function(){
+    var that = this
+    wx.request({
+      url: baseUrl + 'user/signup', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+      },
+      success: res => {
+        if (res.data.ret == 0) {
+          wx.showToast({
+            title: '签到成功',
+            icon: 'success',
+            duration: 2000
+          });
+        } else if (res.data.ret == 8001) {
+          var login_res = false
+          utils.relogin().then(function (loginres) {
+            login_res = loginres
+            console.log(login_res)
+            if (login_res) {
+              that.onLoad();
+            }
+          });
+        } else if (res.data.ret == 8022){
+          wx.showToast({
+            title: '今天已经签过到了',
+            icon: 'none',
+            duration: 2000
+          });
+        }
 
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

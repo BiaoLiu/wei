@@ -2,6 +2,7 @@
 <view class="container">
   <view class="logo">
   <open-data type="userAvatarUrl" class="userinfo"></open-data>
+  <view class='userscore'>积分：{{your_score}}</view>
   <open-data type="userNickName" class="nickname" lang="zh_CN"></open-data> 
   <navigator   url="/pages/back/back" hover-class="none">
     <image src='../../image/icon/add.png'></image>
@@ -25,4 +26,14 @@
     </navigator>
     </view>
   <view class='blank'></view>
+  
+
+   <view class="list-wrapper">
+    <view class="list-group" wx:for="{{menuitems}}" wx:key="item">
+      <navigator class="menu" wx:for="{{item}}" wx:for-item="items" wx:key="items" 
+      url="{{items.url}}" bindtap="{{items.bindtap}}" hover-class="none">
+        {{items.text}}<view class='arrow'/>
+      </navigator>
+    </view>
+  </view>
 </view>

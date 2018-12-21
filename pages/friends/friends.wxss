@@ -3,23 +3,51 @@
   padding: 0;
   margin: 0;
 }
-.friend{
-  height: 80rpx;
+.lists{
+  border: solid 1px#d0d0d0;
+  height: 90rpx;
   width: 100%;
-  border-bottom: 1rpx solid rgb(179, 179, 179);
-  padding-top: 30rpx;
-  padding-left: 20rpx;
-  background: white;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
-.friend image{
-  width: 50rpx;
-  height: 50rpx;
+.lists view{
+  height: 100%;
+  line-height: 90rpx;
 }
-.friend .fimg{
+.lists view:first-child{
   float: left;
-  margin-left: 30rpx;
+  width: 48%;
+  padding-left: 2%;
+  position: relative;
 }
-.friend .fname{
+.lists view:last-child{
+  float: right;
+  width: 48%;
+  padding-right: 2%;
+}
+.lists view:first-child image{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 40rpx;
+  left: 40rpx;
+  margin-left: -20rpx;
+  margin-top: -20rpx;
+}
+.lists view:first-child text{
+  font-size: 30rpx;
+  margin-left: 60rpx;
+}
+.lists view:last-child text:first-child{
+  font-size: 28rpx;
   float: left;
-  margin-left: 20rpx;
 }
+.lists view:last-child text:last-child{
+  font-size: 18rpx;
+  float: right;
+}
+
+
+
+

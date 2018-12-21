@@ -15,7 +15,8 @@ Page({
     rotateZPositionCount: 0, // 当前转盘的rotateZ 值
     preUseRotateZ: 0,           // 上一次已抽奖中奖奖品的RotateZ
     yourscore:0,
-    scoreOneTime:10
+    scoreOneTime:10,
+    rotateZPositionIndex:4
   },
   onLoad() {
     var that = this
@@ -57,42 +58,9 @@ Page({
   },
   // 关闭模态框
   closeModal(){
-    //this.sendGameData();
     this.setData({
       gameModal: false
     })
-  },
-  sendGameData(){
-    var that=this
-    console.log(that.data.gameModalData)
-    wx.request({
-      url: baseUrl + 'game/sendgamedata', //仅为示例，并非真实的接口地址
-      data: that.data.gameModalData,
-      method: 'POST',
-      header: {
-        'content-type': 'application/json', // 默认值
-        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
-      },
-      success: res => {
-        console.log(res.data)
-        if (res.data.ret == 0) {
-          var drawcount = res.data.data
-        } else if (res.data.ret == 8001) {
-          var login_res = false
-          utils.relogin().then(function (loginres) {
-            login_res = loginres
-            if (login_res) {
-              that.onLoad();
-            }
-          });
-        }
-
-        this.setData({
-          luckDrawCount: 3 - drawcount
-        })
-      }
-    })
-
   },
   // 打开模态框
   showModal(){
@@ -140,26 +108,17 @@ Page({
   },
   // 开始游戏
   gameAction(){
-    wx.showToast({
-      title: '敬请期待。。。',
-      icon: 'none',
-      duration: 2000
-    });
-    return;
-    // 模拟抽奖
-    var rotateZPositionIndex = Math.round(Math.random()* 4)
-    // 判断游戏是否进行中
-    if(this.data.gameState) return;
+    var that = this
     // 判断是否还有抽奖资格
-    if (this.data.luckDrawCount <= 0 ){
+    if (this.data.luckDrawCount <= 0) {
       wx.showToast({
-          title: 'Sorry 您没有抽奖机会了',
-          icon: 'none',
-          duration: 2000
+        title: 'Sorry 您没有抽奖机会了',
+        icon: 'none',
+        duration: 2000
       });
       return;
     }
-    if (this.data.yourscore < this.data.scoreOneTime){
+    if (this.data.yourscore < this.data.scoreOneTime) {
       wx.showToast({
         title: 'Sorry,你的积分不足',
         icon: 'none',
@@ -167,7 +126,62 @@ Page({
       });
       return;
     }
-    this.gameAnimationRun(rotateZPositionIndex);
+    wx.request({
+      url: baseUrl + 'user/drawluck', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+      },
+      success: res => {
+        if (res.statusCode!=200){
+          wx.showToast({
+            title: '网络异常,请稍候重试。',
+            icon: 'none',
+            duration: 2000
+          });
+          return false;
+        }
+        if (res.data.ret == 0) {
+          var prizeindex = res.data.data
+        } else if (res.data.ret == 8001) {
+          var login_res = false
+          utils.relogin().then(function (loginres) {
+            login_res = loginres
+            if (login_res) {
+              that.onLoad();
+            }
+          });
+          wx.showToast({
+            title: '网络异常,请稍候重试。',
+            icon: 'none',
+            duration: 2000
+          });
+          return false;
+        }else{
+          var title =res.data.msg;
+          wx.showToast({
+            title: title,
+            icon: 'none',
+            duration: 2000
+          });
+          return;
+        }
+        this.setData({
+          rotateZPositionIndex:prizeindex,
+        })
+        // 模拟抽奖
+        var rotateZPositionIndex = this.data.rotateZPositionIndex
+        // 判断游戏是否进行中
+        if (this.data.gameState) return;
+
+        this.gameAnimationRun(rotateZPositionIndex);
+      }
+
+    })
+
 
   },
   // 游戏实现部分
@@ -210,4 +224,10 @@ Page({
   onShow: function () {
     this.onLoad()
 },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 });

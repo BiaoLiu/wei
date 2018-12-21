@@ -7,9 +7,39 @@ Page({
    * 页面的初始数据
    */
   data: {
+    menuitems: [
+      [{ text: '电话', url: '', tips: '', bindtap: 'navTo' }],
+      [{ text: '积分记录', url: '', tips: '', bindtap: 'navTo' }, { text: '我的奖品', url: '', tips: '', bindtap: 'navTo' }],
+      [{ text: '积分获取规则', url: '', tips: '', bindtap: 'showRule' }, { text: '联系客服', url: '', tips: '', bindtap: 'makePhone' }],
+      ],
     firend_count:0,
     like_count:0,
-    user_id:0
+    user_id:0,
+    your_score:0,
+  },
+  makePhone() {
+    wx.showModal({
+      title: '联系客服',
+      content: '17620352758',
+      confirmText: '拨打',
+      success: res => {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: '17620352758'
+          })
+        }
+      }
+    })
+  },
+  navTo(){
+
+  },
+  showRule() {
+    wx.showModal({
+      title: '积分获取规则',
+      content: '1:通过个人中心签到获取；\r\n2：分享首页内容获取',
+      showCancel: false
+    })
   },
   signUp: function(){
     var that = this
@@ -69,7 +99,8 @@ Page({
          this.setData({
            firend_count: userinfo.friend_count,
            like_count: userinfo.like_count,
-           user_id:userinfo.id
+           user_id:userinfo.id,
+           your_score:userinfo.score,
          })
        }else if(res.data.ret==8001){
          var login_res = false

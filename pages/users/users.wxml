@@ -1,10 +1,15 @@
 <!--pages/users/users.wxml-->
+
 <view class='container'>
-  <view class='friend' wx:for="{{friend_list}}" wx:for-index="key"  wx:for-item="friend">
-  <view class='fcon'>
-   <view class='fimg'><image src='{{friend.avatar}}'></image></view>
-   <view class='fname'><text>{{friend.user_nickname}}</text></view>
-   <view class='create_time'><text>{{friend.created_at}}</text></view>
-  </view>
+  <view class='lists'  wx:for="{{friend_list}}" wx:for-index="key"  wx:for-item="friend">
+    <view>
+      <image src='{{friend.avatar}}'></image>
+      <text>{{friend.user_nickname}}</text>
+    </view>
+    <view>
+      <text>积分：{{friend.score}}</text>
+      <text>{{friend.created_at}}</text>
+    </view>
   </view>
 </view>
+

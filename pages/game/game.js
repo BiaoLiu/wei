@@ -4,6 +4,7 @@
 /// 弹出modal显示抽奖结果
 /// （理论支撑微信小程序和支付宝小程序,只需做些许修改）
 const baseUrl = 'https://www.popyelove.com/'
+var utils = require('../../utils/util.js')
 Page({
   data: {
     gameAnimation: null, //转盘动画

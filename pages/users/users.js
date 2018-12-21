@@ -84,6 +84,7 @@ Page({
     wx.request({
       url: baseUrl + 'user/users', //仅为示例，并非真实的接口地址
       data: {
+        limit:15
       },
       method: 'POST',
       header: {
@@ -121,7 +122,8 @@ Page({
     wx.request({
       url: baseUrl + 'user/users', //仅为示例，并非真实的接口地址
       data: {
-        page: page
+        page: page,
+        limit:15
       },
       method: 'POST',
       header: {

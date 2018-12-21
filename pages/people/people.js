@@ -8,8 +8,7 @@ Page({
    */
   data: {
     menuitems: [
-      [{ text: '电话', url: '', tips: '', bindtap: 'navTo' }],
-      [{ text: '积分记录', url: '', tips: '', bindtap: 'navTo' }, { text: '我的奖品', url: '', tips: '', bindtap: 'navTo' }],
+      [{ text: '积分记录', url: '/pages/scorelog/scorelog', tips: '', bindtap: 'navTo' }, { text: '我的奖品', url: '', tips: '', bindtap: 'navTo' }],
       [{ text: '积分获取规则', url: '', tips: '', bindtap: 'showRule' }, { text: '联系客服', url: '', tips: '', bindtap: 'makePhone' }],
       ],
     firend_count:0,
@@ -37,7 +36,7 @@ Page({
   showRule() {
     wx.showModal({
       title: '积分获取规则',
-      content: '1:通过个人中心签到获取；\r\n2：分享首页内容获取',
+      content: '1：通过个人中心签到获取;\r2：分享首页内容获取',
       showCancel: false
     })
   },

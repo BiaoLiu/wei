@@ -1,4 +1,4 @@
-// pages/friends/friends.js
+// pages/scorelog/scorelog.js
 const baseUrl = 'https://www.popyelove.com/'
 var utils = require('../../utils/util.js')
 Page({
@@ -7,20 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page: 1,
+    scorelog_list:[],
     limit:15,
-    friend_list:[]
+    page:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
+    var that = this
     wx.request({
-      url: baseUrl + 'user/friends', //仅为示例，并非真实的接口地址
+      url: baseUrl + 'user/score/logs', //仅为示例，并非真实的接口地址
       data: {
-      limit:that.data.limit
+        limit: that.data.limit
       },
       method: 'POST',
       header: {
@@ -30,10 +30,10 @@ Page({
       success: res => {
         console.log(res.data)
         if (res.data.ret == 0) {
-          var friends = res.data.data
-        } else if (res.data.ret==8001){
-          var login_res=false
-          utils.relogin().then(function(loginres){
+          var scorelogs = res.data.data
+        } else if (res.data.ret == 8001) {
+          var login_res = false
+          utils.relogin().then(function (loginres) {
             login_res = loginres
             console.log(login_res)
             if (login_res) {
@@ -41,13 +41,13 @@ Page({
             }
           });
 
-          
-        }else{
-          var friends = []
+
+        } else {
+          var scorelogs = []
         }
 
         this.setData({
-          friend_list: friends
+          scorelog_list: scorelogs
         })
       }
     })
@@ -88,9 +88,9 @@ Page({
     wx.showNavigationBarLoading();
     var that = this
     wx.request({
-      url: baseUrl + 'user/friends', //仅为示例，并非真实的接口地址
+      url: baseUrl + 'user/score/logs', //仅为示例，并非真实的接口地址
       data: {
-       limit:that.data.limit
+        limit: that.data.limit
       },
       method: 'POST',
       header: {
@@ -100,7 +100,7 @@ Page({
       success: res => {
         console.log(res.data)
         if (res.data.ret == 0) {
-          var friends = res.data.data
+          var scorelogs = res.data.data
         } else if (res.data.ret == 8001) {
           var login_res = false
           utils.relogin().then(function (loginres) {
@@ -113,11 +113,11 @@ Page({
 
 
         } else {
-          var friends = []
+          var scorelogs = []
         }
 
         this.setData({
-          friend_list: friends,
+          scorelog_list: scorelogs,
           page: 1
         })
         // 隐藏导航栏加载框
@@ -132,7 +132,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
     var that = this;
     // 显示加载图标
     wx.showLoading({
@@ -141,10 +140,10 @@ Page({
     // 页数+1
     var page = this.data.page + 1;
     wx.request({
-      url: baseUrl + 'user/friends', //仅为示例，并非真实的接口地址
+      url: baseUrl + 'user/score/logs', //仅为示例，并非真实的接口地址
       data: {
         page: page,
-        limit:that.data.limit
+        limit: that.data.limit
       },
       method: 'POST',
       header: {
@@ -152,9 +151,9 @@ Page({
         'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
       },
       success: res => {
-        var friend_list = that.data.friend_list
+        var scorelog_list = that.data.scorelog_list
         if (res.data.ret == 0) {
-          var friends = res.data.data
+          var scorelogs = res.data.data
         } else if (res.data.ret == 8001) {
           var login_res = false
           utils.relogin().then(function (loginres) {
@@ -165,13 +164,13 @@ Page({
             }
           });
         } else {
-          var friends = []
+          var scorelogs = []
         }
         for (var i = 0; i < res.data.data.length; i++) {
-          friend_list.push(res.data.data[i]);
+          scorelog_list.push(res.data.data[i]);
         }
         this.setData({
-          friend_list: that.data.friend_list,
+          scorelog_list: that.data.scorelog_list,
           page: page
         })
         // 隐藏加载框

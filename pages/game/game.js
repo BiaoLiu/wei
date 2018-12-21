@@ -15,7 +15,7 @@ Page({
     rotateZPositionCount: 0, // 当前转盘的rotateZ 值
     preUseRotateZ: 0,           // 上一次已抽奖中奖奖品的RotateZ
     yourscore:0,
-    scoreOneTime:10,
+    scoreOneTime:5,
     rotateZPositionIndex:4
   },
   onLoad() {
@@ -109,6 +109,11 @@ Page({
   // 开始游戏
   gameAction(){
     var that = this
+    // 判断游戏是否进行中
+    if (this.data.gameState) return;
+    that.setData({
+      gameState: true
+    })
     // 判断是否还有抽奖资格
     if (this.data.luckDrawCount <= 0) {
       wx.showToast({
@@ -116,6 +121,9 @@ Page({
         icon: 'none',
         duration: 2000
       });
+      that.setData({
+        gameState: false
+      })
       return;
     }
     if (this.data.yourscore < this.data.scoreOneTime) {
@@ -124,6 +132,9 @@ Page({
         icon: 'none',
         duration: 2000
       });
+      that.setData({
+        gameState: false
+      })
       return;
     }
     wx.request({
@@ -142,6 +153,9 @@ Page({
             icon: 'none',
             duration: 2000
           });
+          that.setData({
+            gameState: false
+          })
           return false;
         }
         if (res.data.ret == 0) {
@@ -167,6 +181,9 @@ Page({
             icon: 'none',
             duration: 2000
           });
+          that.setData({
+            gameState: false
+          })
           return;
         }
         this.setData({
@@ -174,9 +191,6 @@ Page({
         })
         // 模拟抽奖
         var rotateZPositionIndex = this.data.rotateZPositionIndex
-        // 判断游戏是否进行中
-        if (this.data.gameState) return;
-
         this.gameAnimationRun(rotateZPositionIndex);
       }
 
@@ -203,7 +217,6 @@ Page({
     });
     animation.rotateZ(toRotateZCount).step();
     this.setData({
-      gameState: true,
       gameAnimation: animation.export()
     })
 

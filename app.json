@@ -7,7 +7,8 @@
     "pages/friends/friends",
     "pages/back/back",
     "pages/users/users",
-    "pages/game/game"
+    "pages/game/game",
+    "pages/scorelog/scorelog"
   ],
   "window": {
     "navigationBarTitleText": "wei助手",

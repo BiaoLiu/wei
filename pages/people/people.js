@@ -8,7 +8,7 @@ Page({
    */
   data: {
     menuitems: [
-      [{ text: '积分记录', url: '/pages/scorelog/scorelog', tips: '', bindtap: 'navTo' }, { text: '我的奖品', url: '', tips: '', bindtap: 'navTo' }],
+      [{ text: '积分记录', url: '/pages/scorelog/scorelog', tips: '', bindtap: 'navTo' }, { text: '我的奖品', url: '/pages/myprize/myprize', tips: '', bindtap: 'navTo' }],
       [{ text: '积分获取规则', url: '', tips: '', bindtap: 'showRule' }, { text: '联系客服', url: '', tips: '', bindtap: 'makePhone' }],
       ],
     firend_count:0,
@@ -158,10 +158,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

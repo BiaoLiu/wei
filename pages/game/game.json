@@ -1,3 +1,4 @@
 {
-    "defaultTitle": "大转盘抽奖"
+    "defaultTitle": "大转盘抽奖",
+    "enablePullDownRefresh": true
 }

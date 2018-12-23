@@ -17,13 +17,13 @@
 }
 .lists view:first-child{
   float: left;
-  width: 30%;
+  width: 70%;
   padding-left: 2%;
   position: relative;
 }
 .lists view:last-child{
   float: right;
-  width: 66%;
+  width: 26%;
   padding-right: 2%;
 }
 .lists view:first-child image{
@@ -41,12 +41,9 @@
 }
 .lists view:last-child text:first-child{
   font-size: 28rpx;
-  float: left;
+ float: right;
 }
-.lists view:last-child text:last-child{
-  font-size: 18rpx;
-  float: right;
-}
+
 
 
 

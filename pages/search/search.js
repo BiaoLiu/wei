@@ -161,11 +161,15 @@ Page({
   },
   getUserInfo: function (e) {
     console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    } else {
+      return
+    }
     wx.request({
       url: baseUrl + 'user/register', //仅为示例，并非真实的接口地址
       data: {
@@ -318,5 +322,7 @@ Page({
         path: '/pages/index/index?friendsessionid=' + minipro_sessionid
       }
     }
-  }
+
+
+  },
 })

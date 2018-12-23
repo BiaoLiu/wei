@@ -4,14 +4,16 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
+	"libVersion": "2.4.2",
 	"appid": "wxca16bd2bae88512b",
 	"projectname": "wxhelper",
 	"debugOptions": {
@@ -36,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -77,7 +79,13 @@
 				{
 					"id": -1,
 					"name": "pages/scorelog/scorelog",
-					"pathName": "pages/scorelog/scorelog"
+					"pathName": "pages/scorelog/scorelog",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/myprize/myprize",
+					"pathName": "pages/myprize/myprize"
 				}
 			]
 		}

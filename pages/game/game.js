@@ -5,20 +5,44 @@
 /// （理论支撑微信小程序和支付宝小程序,只需做些许修改）
 const baseUrl = 'https://www.popyelove.com/'
 var utils = require('../../utils/util.js')
+const app = getApp()
 Page({
   data: {
+    userInfo: {},
     gameAnimation: null, //转盘动画
     gameState: false,   // 游戏状态
     gameModal: false,   // 模态框控制状态
-    luckDrawCount: 0,  //  抽奖次数
+    luckDrawCount: 3,  //  抽奖次数
     gameModalData: {},  //  奖品modal显示的数据（抽奖结果数据）
     rotateZPositionCount: 0, // 当前转盘的rotateZ 值
     preUseRotateZ: 0,           // 上一次已抽奖中奖奖品的RotateZ
     yourscore:0,
     scoreOneTime:5,
-    rotateZPositionIndex:4
+    rotateZPositionIndex:4,
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  onLoad() {
+  addUser: function (e) {
+    console.log(e)
+    if (e.hasOwnProperty("friendsessionid")) {
+      wx.request({
+        url: baseUrl + 'user/addfriend', //仅为示例，并非真实的接口地址
+        data: {
+          friend_sessionid: e.friendsessionid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+        },
+        success: res => {
+          console.log(res)
+        }
+      })
+    }
+
+  },
+  onLoad(e) {
     var that = this
     wx.request({
       url: baseUrl + 'game/drawcount', //仅为示例，并非真实的接口地址
@@ -39,21 +63,85 @@ Page({
           utils.relogin().then(function (loginres) {
             login_res = loginres
             if (login_res) {
-              that.onLoad();
+              that.onLoad(e);
             }
           });
         }
-
+        that.addUser(e)
         this.setData({
           luckDrawCount:3-drawcount,
           yourscore: yscore
         })
       }
     })
+
+
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+
+
+  },
+  getUserInfo: function (e) {
+    console.log(e)
+    if(e.detail.userInfo){
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    }else{
+      return
+    }
+    wx.request({
+      url: baseUrl + 'user/register', //仅为示例，并非真实的接口地址
+      data: {
+        user_nickname: e.detail.userInfo.nickName,
+        avatar: e.detail.userInfo.avatarUrl,
+        sex: e.detail.userInfo.gender,
+        country: e.detail.userInfo.country,
+        province: e.detail.userInfo.province,
+        city: e.detail.userInfo.city
+
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Minipro-sessionid': wx.getStorageSync('Minipro_sessionid')
+      },
+      success: res => {
+        console.log(res.data)
+      }
+    })
   },
   // 点击立即使用按钮
   actionBtn(){
-    console.log('去向'); // 抽中奖可以重定向到其他页面，如业务办理，商品购买页面
+    wx.navigateTo({
+      url: '/pages/myprize/myprize'
+    })
     this.closeModal(); // 关闭模态框
   },
   // 关闭模态框
@@ -235,12 +323,66 @@ Page({
   },
 
   onShow: function () {
-    this.onLoad()
-},
+    this.onPullDownRefresh()
+  },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    console.log(res)
+    var minipro_sessionid = wx.getStorageSync('Minipro_sessionid')
+    if (res.from == "button") {
+      return {
+        title: res.target.dataset.title,
+        path: '/pages/game/game?friendsessionid=' + minipro_sessionid,
+        imageUrl: res.target.dataset.imgsrc
+      }
+    } else if (res.from == "menu") {
+      return {
+        title: '分享给好友',
+        path: '/pages/game/game?friendsessionid=' + minipro_sessionid
+      }
+    }
 
+
+  },
+  /**
+* 页面相关事件处理函数--监听用户下拉动作
+*/
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: baseUrl + 'game/drawcount', //仅为示例，并非真实的接口地址
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
+      },
+      success: res => {
+        console.log(res.data)
+        if (res.data.ret == 0) {
+          var drawcount = res.data.data.count
+          var yscore = res.data.data.score
+        } else if (res.data.ret == 8001) {
+          var login_res = false
+          utils.relogin().then(function (loginres) {
+            login_res = loginres
+            if (login_res) {
+              that.onLoad();
+            }
+          });
+        }
+        this.setData({
+          luckDrawCount: 3 - drawcount,
+          yourscore: yscore
+        })
+        // 隐藏导航栏加载框
+        wx.hideNavigationBarLoading();
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }
+    })
   }
 });

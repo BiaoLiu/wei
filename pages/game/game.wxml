@@ -45,4 +45,5 @@
             </view>
         </view>
  </scroll-view>
+   <button wx:if="{{!hasUserInfo && canIUse}}"  class='auth_but'  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> </button>
 </view>

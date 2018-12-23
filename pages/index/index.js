@@ -13,6 +13,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   addUser:function(e){
+    console.log(e)
     if (e.hasOwnProperty("friendsessionid")){
       wx.request({
         url: baseUrl + 'user/addfriend', //仅为示例，并非真实的接口地址
@@ -33,6 +34,7 @@ Page({
   },
   // 更改点赞状态
   onCollectionTap: function (event) {
+    console.log(event)
     // 获取当前点击下标
     var index = event.currentTarget.dataset.index;
     // data中获取列表
@@ -91,9 +93,9 @@ Page({
       }
     });
   },
-  onLoad: function (res) {
-    console.log(res)
-    this.addUser(res)
+  onLoad: function (e) {
+    console.log(e)
+    this.addUser(e)
     wx.request({
       url: baseUrl +'active/list', //仅为示例，并非真实的接口地址
       data: {
@@ -145,11 +147,15 @@ Page({
   },
   getUserInfo: function (e) {
     console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    } else {
+      return
+    }
     wx.request({
       url: baseUrl + 'user/register', //仅为示例，并非真实的接口地址
       data: {

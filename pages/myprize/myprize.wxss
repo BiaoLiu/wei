@@ -1,0 +1,54 @@
+/* pages/myprize/myprize.wxss */
+.container{
+  padding: 0;
+  margin: 0;
+}
+.lists{
+  border: solid 1px#d0d0d0;
+  height: 90rpx;
+  width: 100%;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.lists view{
+  height: 100%;
+  line-height: 90rpx;
+}
+.lists view:first-child{
+  float: left;
+  width: 48%;
+  padding-left: 2%;
+  position: relative;
+}
+.lists view:last-child{
+  float: right;
+  width: 48%;
+  padding-right: 2%;
+}
+.lists view:first-child image{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 40rpx;
+  left: 40rpx;
+  margin-left: -20rpx;
+  margin-top: -20rpx;
+}
+.lists view:first-child text{
+  font-size: 30rpx;
+  margin-left: 60rpx;
+}
+.lists view:last-child text:first-child{
+  font-size: 28rpx;
+  float: left;
+}
+.chongzhi{
+ width:40rpx;
+ height: 40rpx;
+ margin-left: 200rpx;
+}
+.lists view:last-child text:last-child{
+  font-size: 28rpx;
+  float: right;
+}

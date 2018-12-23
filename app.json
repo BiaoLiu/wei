@@ -8,7 +8,8 @@
     "pages/back/back",
     "pages/users/users",
     "pages/game/game",
-    "pages/scorelog/scorelog"
+    "pages/scorelog/scorelog",
+    "pages/myprize/myprize"
   ],
   "window": {
     "navigationBarTitleText": "wei助手",

@@ -1,5 +1,5 @@
 <view class="container">
-<scroll-view scroll-y="{{true}}" style="width: 100%" >
+<scroll-view id="scroll" scroll-y="{{true}}" style="width: 100%" >
     <!-- 背景 -->
     <view class="game-bg">
         <image src="/image/images/game_bg_01.jpg" />

@@ -22,6 +22,14 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  pageScrollToBottom: function () {
+    wx.createSelectorQuery().select('#scroll').boundingClientRect(function (rect) {
+      // 使页面滚动到底部
+      wx.pageScrollTo({
+        scrollTop: rect.bottom
+      })
+    }).exec()
+  },
   addUser: function (e) {
     console.log(e)
     if (e.hasOwnProperty("friendsessionid")) {
@@ -72,6 +80,7 @@ Page({
           luckDrawCount:3-drawcount,
           yourscore: yscore
         })
+        that.pageScrollToBottom()
       }
     })
 

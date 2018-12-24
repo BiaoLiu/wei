@@ -28,8 +28,6 @@
     </navigator>
     </view>
   <view class='blank'></view>
-  
-
    <view class="list-wrapper">
     <view class="list-group" wx:for="{{menuitems}}" wx:key="item">
       <navigator class="menu" wx:for="{{item}}" wx:for-item="items" wx:key="items" 

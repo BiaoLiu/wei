@@ -51,7 +51,7 @@ const getscorebyshare = function getscorebyshare() {
         console.log(res)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://www.popyelove.com/auth/login', //仅为示例，并非真实的接口地址
+          url: 'https://www.popyelove.com/user/getscorebyshare', //仅为示例，并非真实的接口地址
           data: {
           },
           method: 'POST',
@@ -60,12 +60,7 @@ const getscorebyshare = function getscorebyshare() {
             'Minipro-sessionid': wx.getStorageSync("Minipro_sessionid")
           },
           success: res => {
-            var jsonstr = res.data
-            if (jsonstr.ret == 0) {
-              var Minipro_sessionid = jsonstr.data.Minipro_sessionid
-              wx.setStorageSync('Minipro_sessionid', Minipro_sessionid)
-              resolve(true)
-            }
+            resolve(res)
           }
         })
       }

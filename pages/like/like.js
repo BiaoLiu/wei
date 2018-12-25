@@ -294,12 +294,36 @@ Page({
       return {
         title: res.target.dataset.title,
         path: '/pages/index/index?friendsessionid=' + minipro_sessionid,
-        imageUrl: res.target.dataset.imgsrc
+        imageUrl: res.target.dataset.imgsrc,
+        success: (res) => {
+          utils.getscorebyshare().then(function (res) {
+            if (res.data.ret == 0) {
+              //分享成功获取积分
+              wx.showToast({
+                title: '分享成功获的' + res.data.data + '积分',
+                icon: 'none',
+                duration: 5000
+              });
+            }
+          });
+        }
       }
     } else if (res.from == "menu") {
       return {
         title: '分享给好友',
-        path: '/pages/index/index?friendsessionid=' + minipro_sessionid
+        path: '/pages/index/index?friendsessionid=' + minipro_sessionid,
+        success: (res) => {
+          utils.getscorebyshare().then(function (res) {
+            if (res.data.ret == 0) {
+              //分享成功获取积分
+              wx.showToast({
+                title: '分享成功获的' + res.data.data + '积分',
+                icon: 'none',
+                duration: 5000
+              });
+            }
+          });
+        }
       }
     }
   }

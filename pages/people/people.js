@@ -36,7 +36,7 @@ Page({
   showRule() {
     wx.showModal({
       title: '积分获取规则',
-      content: '1：通过个人中心签到获取;\r2：分享首页内容获取',
+      content: '1：通过个人中心签到获取;\r2：分享首页内容获取;\r3：上传优质内容并通过审核',
       showCancel: false
     })
   },

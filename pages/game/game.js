@@ -379,7 +379,7 @@ Page({
           utils.relogin().then(function (loginres) {
             login_res = loginres
             if (login_res) {
-              that.onLoad();
+              this.onLoad();
             }
           });
         }
@@ -387,10 +387,12 @@ Page({
           luckDrawCount: 3 - drawcount,
           yourscore: yscore
         })
+      
         // 隐藏导航栏加载框
         wx.hideNavigationBarLoading();
         // 停止下拉动作
         wx.stopPullDownRefresh();
+        this.pageScrollToBottom()
       }
     })
   }

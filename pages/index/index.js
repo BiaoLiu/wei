@@ -180,11 +180,18 @@ Page({
   onShareAppMessage: function (res) {
     console.log(res)
     var minipro_sessionid = wx.getStorageSync('Minipro_sessionid')
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     if (res.from=="button"){
       return {
         title: res.target.dataset.title,
         path: '/pages/index/index?friendsessionid=' + minipro_sessionid,
-        imageUrl: res.target.dataset.imgsrc
+        imageUrl: res.target.dataset.imgsrc,
+        success: (res) => {
+          console.log(res)
+          console.log(4444444)
+        }
       }
     } else if (res.from == "menu"){
       return {

@@ -10,7 +10,17 @@ Page({
     page: 1,
     friend_list: []
   },
-
+  zhongjiang(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/otherprize/otherprize?user_id=' + e.currentTarget.dataset.user_id
+    })
+  },
+  shangchuan(e){
+    wx.navigateTo({
+      url: '/pages/shangchuan/shangchuan?user_id=' + e.currentTarget.dataset.user_id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

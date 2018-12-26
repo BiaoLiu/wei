@@ -6,7 +6,7 @@
   <open-data type="userNickName" class="nickname" lang="zh_CN"></open-data> 
   <navigator   url="/pages/back/back" hover-class="none">
     <image src='../../image/icon/add.png'></image>
-    <text>上传</text>
+    <text>贡献</text>
   </navigator>
   <navigator  wx:if="{{user_id==1000005}}" url="/pages/users/users" hover-class="none">
     <image src='../../image/icon/yonghuguanli.png'></image>

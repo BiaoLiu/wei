@@ -1,0 +1,20 @@
+<!--pages/otherprize/otherprize.wxml-->
+<view class='container'>
+  <view class='lists'  wx:for="{{myprize_list}}" wx:key="key"  wx:for-item="myprize">
+    <view>
+      <text>{{myprize.prize_name}}</text>
+    </view>
+    <view>
+      <text>手机号：{{myprize.phone}}</text>
+    </view>
+    <view wx:if="{{myprize.status==1}}">
+      <text>到账中。。。</text>
+    </view>
+    <view wx:if="{{myprize.status==2}}">
+      <text>已到账</text>
+    </view>
+    <view>
+      <text bindtap='yichongzhi' data-id='{{myprize.id}}'>已充值</text>
+    </view>
+  </view>
+</view>

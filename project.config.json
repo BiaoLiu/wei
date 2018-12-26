@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -85,7 +85,13 @@
 				{
 					"id": -1,
 					"name": "pages/myprize/myprize",
-					"pathName": "pages/myprize/myprize"
+					"pathName": "pages/myprize/myprize",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/otherprize/otherprize",
+					"pathName": "pages/otherprize/otherprize"
 				}
 			]
 		}

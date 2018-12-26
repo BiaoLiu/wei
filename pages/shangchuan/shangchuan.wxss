@@ -1,0 +1,70 @@
+/* pages/shangchuan/shangchuan.wxss */
+.container{
+  margin: 0rpx;
+  padding: 0rpx;
+}
+.card{
+  width: 650rpx;
+  height:auto;
+  margin-top: 40rpx;
+  border-radius: 10rpx;
+  background-color: #FBFAF6;
+}
+.card-img-view{
+  text-align: center;
+}
+.card-con-view{
+  min-height: 150rpx;
+  margin-left: 10rpx;
+  margin-top: 20rpx;
+  border-bottom-right-radius:10rpx;
+  border-bottom-left-radius:10rpx;
+  background-color: #FBFAF6;
+}
+.card-img{
+  border-radius: 10rpx;
+  margin-bottom: -10rpx;
+  width: 640rpx;
+  
+}
+.card-text{
+  font-size: 30rpx;
+}
+.card-con-but-view{
+  margin: 20rpx 20rpx;
+  padding-bottom:60rpx;
+}
+.card-con-but{
+  width: 50rpx;
+  height: 50rpx;
+}
+.card-con-like{
+  float: left;
+}
+.card-con-friends{
+  float: right;
+  margin-right: -50rpx;
+}
+.card-con-wechat{
+  float: right;
+  margin-right: -50rpx;
+}
+.card-con-but-group{
+  width: 50rpx;
+  height: 50rpx;
+  padding: 0;
+  border: none;
+  opacity: 0;
+
+}
+.card-con-but-group-friends{
+  float: right;
+  margin-right: 20rpx;
+}
+.card-con-but-group-wechat{
+  float: right;
+  margin-right: 20rpx;
+}
+.like_count{
+  font-size: 24rpx;
+}

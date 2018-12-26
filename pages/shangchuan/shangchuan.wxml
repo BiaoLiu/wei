@@ -8,10 +8,8 @@
     <view class='card-con-view'>
     <text class='card-text' selectable="true" bindlongpress='copy' data-text='{{card_list.active_rules}}'>{{card_list.active_rules}}</text>
     <view class='card-con-but-view'>
-    <button class='card-con-but-group card-con-but-group-friends' data-title='{{card_list.active_rules}}' data-imgsrc='{{card_list.active_picture}}' open-type="share"></button>
-    <image class='card-con-friends card-con-but' src='../../image/icon/friends.png'></image>
-    <button class='card-con-but-group card-con-but-group-wechat' data-title='{{card_list.active_rules}}' data-imgsrc='{{card_list.active_picture}}' open-type="share"></button>
-    <image class='card-con-wechat card-con-but' src='../../image/icon/wechat.png'></image>
+    <button bindtap='shenhetongguo' data-user_id='{{card_list.userid}}'  data-active_id='{{card_list.id}}' class='card-con-but-group card-con-but-group-friends'></button>
+    <image class='card-con-friends card-con-but' src='../../image/icon/shenhe.png'></image>
     </view>
     </view>
   </view>

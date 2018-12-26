@@ -61,10 +61,3 @@
   float: right;
   margin-right: 20rpx;
 }
-.card-con-but-group-wechat{
-  float: right;
-  margin-right: 20rpx;
-}
-.like_count{
-  font-size: 24rpx;
-}

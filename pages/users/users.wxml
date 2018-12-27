@@ -5,8 +5,10 @@
     <view>
       <image src='{{friend.avatar}}'></image>
       <text>{{friend.user_nickname}}</text>
-      <text bindtap='zhongjiang' data-user_id='{{friend.id}}'>中奖：{{friend.prize_real_count}}</text>
-      <text bindtap='shangchuan' data-user_id='{{friend.id}}'>上传：{{friend.post_count}}</text>
+      <text wx:if='{{friend.prize_real_count>0}}' bindtap='zhongjiang' data-user_id='{{friend.id}}' style='color:red'>中奖：{{friend.prize_real_count}}</text>
+      <text wx:if='{{friend.prize_real_count==0}}' bindtap='zhongjiang' data-user_id='{{friend.id}}'>中奖：{{friend.prize_real_count}}</text>
+      <text wx:if='{{friend.post_count>0}}' bindtap='shangchuan' data-user_id='{{friend.id}}' style='color:red'>上传：{{friend.post_count}}</text>
+      <text wx:if='{{friend.post_count==0}}' bindtap='shangchuan' data-user_id='{{friend.id}}'>上传：{{friend.post_count}}</text>
     </view>
     <view>
       <text>积分：{{friend.score}}</text>

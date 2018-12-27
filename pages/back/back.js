@@ -12,7 +12,14 @@ Page({
     context:''
   },
   uploadimg:function(data) {
-    console.log(data)
+    if (data.context==''){
+      wx.showToast({
+        title: '内容不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     var that = this;
     wx.showLoading({
       title: '上传中...',

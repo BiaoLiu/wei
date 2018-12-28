@@ -19,7 +19,7 @@
     <view class='navigator'>
     <navigator url="/pages/friends/friends" hover-class="none">
       <view><image src='../../image/icon/haoyou.png'></image></view>
-      <view>好友|{{firend_count}}</view>
+      <view>相知|{{firend_count}}</view>
     </navigator>
 
     <navigator url="/pages/like/like" hover-class="none">

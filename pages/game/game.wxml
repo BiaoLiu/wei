@@ -12,7 +12,7 @@
         <!-- 转盘 -->
     <view class="game-box">
         <view class="wheel" animation="{{gameAnimation}}">
-            <image src="/image/images/game-wheel.png" />
+            <image src="http://pjd0p2xh1.bkt.clouddn.com/game-wheel.png" />
         </view>
         <view class="arrow" bindtap="gameAction">
             <image src="/image/images/game-arrow.png" />

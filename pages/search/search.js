@@ -1,7 +1,7 @@
 // pages/search/search.js
 const app = getApp()
 const baseUrl = 'https://www.popyelove.com/'
-const qrcode = 'http://pjd0p2xh1.bkt.clouddn.com/qrcode.jpg'
+const qrcode = 'http://cdn.popyelove.com/qrcode.jpg'
 var utils = require('../../utils/util.js')
 Page({
 

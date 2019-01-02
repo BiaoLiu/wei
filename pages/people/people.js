@@ -15,6 +15,7 @@ Page({
     like_count:0,
     user_id:0,
     your_score:0,
+    is_show:0,
   },
   makePhone() {
     wx.showModal({
@@ -54,7 +55,7 @@ Page({
       success: res => {
         if (res.data.ret == 0) {
           wx.showToast({
-            title: '签到成功',
+            title: '签到成功,获得积分',
             icon: 'success',
             duration: 2000
           });
@@ -100,6 +101,7 @@ Page({
            like_count: userinfo.like_count,
            user_id:userinfo.id,
            your_score:userinfo.score,
+           is_show: userinfo.is_show,
          })
        }else if(res.data.ret==8001){
          var login_res = false

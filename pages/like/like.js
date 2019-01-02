@@ -1,7 +1,7 @@
 // pages/like/like.js
 const baseUrl = 'https://www.popyelove.com/'
 const app = getApp()
-const qrcode = 'http://pjd0p2xh1.bkt.clouddn.com/qrcode.jpg'
+const qrcode = 'http://cdn.popyelove.com/qrcode.jpg'
 var utils = require('../../utils/util.js')
 var switch_flag;
 Page({

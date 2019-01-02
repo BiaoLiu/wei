@@ -5,7 +5,7 @@
                <view class="weui-cell__bd">
                    <view class="weui-uploader">
                        <view class="weui-uploader__hd">
-                           <view class="weui-uploader__title">内容贡献</view>
+                           <view class="weui-uploader__title">贡献</view>
                            <view class="weui-uploader__info">{{images.length}}/1</view>
                        </view>
                        <view class="weui-uploader__bd">

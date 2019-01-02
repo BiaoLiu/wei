@@ -4,7 +4,7 @@
   <open-data type="userAvatarUrl" class="userinfo"></open-data>
   <view class='userscore'>积分：{{your_score}}</view>
   <open-data type="userNickName" class="nickname" lang="zh_CN"></open-data> 
-  <navigator   url="/pages/back/back" hover-class="none">
+  <navigator wx:if="{{is_show==1}}"  url="/pages/back/back" hover-class="none">
     <image src='../../image/icon/add.png'></image>
     <text>贡献</text>
   </navigator>

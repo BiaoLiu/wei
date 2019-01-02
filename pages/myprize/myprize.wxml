@@ -17,6 +17,6 @@
   </view>
 </view>
 <modal id="modal" hidden="{{hiddenmodalput}}" title="充值信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
-      <input type='number' placeholder="与支付宝绑定的手机号：" bindinput="getInput" />
+      <input type='number' focus='{{focus}}' placeholder="与支付宝绑定的手机号：" bindinput="getInput" />
 </modal>
 

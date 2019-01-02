@@ -12,7 +12,8 @@ Page({
     getInput:'',
     prize_id:0,
     page:1,
-    limit:15
+    limit:15,
+    focus:false
   },
   getInput: function (e) {//方法1
     this.data.getInput = e.detail.value;
@@ -20,7 +21,8 @@ Page({
   modalinput: function (e) {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput,
-      prize_id: e.target.dataset.prize_id
+      prize_id: e.target.dataset.prize_id,
+      focus:true
     })
   },
   //取消按钮  
